@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPACITI - Accelerating Tech Careers in South Africa</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #030427;
+            --secondary: #c21f28;
+            --accent: #fa8dd9;
+            --success: #4a0f50;
+            --dark: #1b0f2a;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-600: #594769;
+            --gray-800: #130d35;
+            --purple-gradient: linear-gradient(135deg, #0b112c 0%, #2b0d2c 100%);
+            --pink-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --blue-gradient: linear-gradient(135deg, #2d1a5c 0%, #5f1392 100%);
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(29, 11, 80, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+             
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--purple-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--purple-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--secondary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+           
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+           
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e5e6eb 0%, #e5e9f0 50%, #334155 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(99,102,241,0.1)" /><stop offset="100%" style="stop-color:rgba(99,102,241,0)" /></radialGradient><radialGradient id="grad2" cx="80%" cy="20%" r="40%"><stop offset="0%" style="stop-color:rgba(236,72,153,0.1)" /><stop offset="100%" style="stop-color:rgba(236,72,153,0)" /></radialGradient></defs><circle cx="200" cy="300" r="100" fill="url(%23grad1)"/><circle cx="800" cy="200" r="150" fill="url(%23grad2)"/><circle cx="600" cy="700" r="120" fill="url(%23grad1)"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.6;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float-particles 20s linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 10s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 12s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 14s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 16s; }
+
+        @keyframes float-particles {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            color: rgb(39, 26, 87);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .hero-badge i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #360d4e 0%, #361463 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--purple-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: rgb(57, 9, 88);
+            padding: 1rem 2rem;
+            border: 2px solid rgba(183, 34, 241, 0.3);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tech-illustration {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(1) {
+            top: 50px;
+            left: 50px;
+            width: 180px;
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 150px;
+            right: 20px;
+            width: 160px;
+            animation-delay: 2s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 100px;
+            left: 20px;
+            width: 200px;
+            animation-delay: 4s;
+        }
+
+        .floating-card:nth-child(4) {
+            bottom: 50px;
+            right: 50px;
+            width: 150px;
+            animation-delay: 1s;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon.code { background: var(--purple-gradient); }
+        .card-icon.cloud { background: var(--blue-gradient); }
+        .card-icon.data { background: var(--pink-gradient); }
+        .card-icon.security { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .central-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: var(--purple-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 0 50px rgba(102, 102, 241, 0.5);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 0 50px rgba(102, 102, 241, 0.5);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 80px rgba(102, 102, 241, 0.8);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gray-50);
+            padding: 5rem 0;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .stat-icon.graduates { background: var(--purple-gradient); }
+        .stat-icon.placement { background: var(--blue-gradient); }
+        .stat-icon.partners { background: var(--pink-gradient); }
+        .stat-icon.salary { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        /* Board of Directors Section */
+        .board-section {
+            padding: 6rem 0;
+            background: var(--gray-50);
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .board-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
+            text-align: center;
+        }
+
+        .board-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .board-image {
+            margin-bottom: 1.5rem;
+        }
+
+        .board-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--purple-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(102, 102, 241, 0.3);
+        }
+
+        .board-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .board-card:nth-child(1) .board-avatar { background: var(--purple-gradient); }
+        .board-card:nth-child(2) .board-avatar { background: var(--blue-gradient); }
+        .board-card:nth-child(3) .board-avatar { background: var(--pink-gradient); }
+        .board-card:nth-child(4) .board-avatar { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .board-card:nth-child(5) .board-avatar { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .board-card:nth-child(6) .board-avatar { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+
+        .board-content {
+            text-align: center;
+        }
+
+        .board-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .board-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .board-bio {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .board-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .board-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .board-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .partner-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
+        }
+
+        .partner-card:hover {
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .partner-icon.microsoft { background: #0078d4; }
+        .partner-icon.aws { background: #ff9900; }
+        .partner-icon.google { background: #4285f4; }
+        .partner-icon.ibm { background: #1261fe; }
+        .partner-icon.accenture { background: #a100ff; }
+        .partner-icon.dimension { background: #00a1c9; }
+
+        .partner-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .partner-card p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: var(--gray-50);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            width: 40px;
+            height: 40px;
+            background: var(--purple-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--blue-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card:nth-child(2) .author-avatar { background: var(--pink-gradient); }
+        .testimonial-card:nth-child(3) .author-avatar { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .testimonial-card:nth-child(4) .author-avatar { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        /* News & Events Section */
+        .news-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .news-image {
+            height: 150px;
+            background: var(--purple-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+        }
+
+        .news-card:nth-child(2) .news-image { background: var(--blue-gradient); }
+        .news-card:nth-child(3) .news-image { background: var(--pink-gradient); }
+
+        .news-icon {
+            font-size: 2.5rem;
+        }
+
+        .news-date {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .news-content {
+            padding: 2rem;
+        }
+
+        .news-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .news-content p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-meta span {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .news-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .news-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Opportunities Section */
+        .opportunities-section {
+            padding: 6rem 0;
+            background: var(--gray-50);
+        }
+
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .opportunity-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .opportunity-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .opportunity-icon.students { background: var(--purple-gradient); }
+        .opportunity-icon.partners { background: var(--blue-gradient); }
+        .opportunity-icon.careers { background: var(--pink-gradient); }
+
+        .opportunity-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .opportunity-content p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .opportunity-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .opportunity-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        .opportunity-features i {
+            color: var(--success);
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+
+        .opportunity-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .opportunity-btn.primary {
+            background: var(--purple-gradient);
+            color: white;
+        }
+
+        .opportunity-btn.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .opportunity-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .opportunity-btn.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 3rem auto 0;
+        }
+
+        .newsletter-input-wrapper {
+            display: flex;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 0.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .newsletter-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 1rem 1.5rem;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-btn {
+            background: var(--purple-gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .program-image.dev { background: var(--purple-gradient); }
+        .program-image.cloud { background: var(--blue-gradient); }
+        .program-image.data { background: var(--pink-gradient); }
+        .program-image.security { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .program-image.mobile { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .program-image.design { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .program-description {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .learn-more-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .learn-more-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+                padding: 8rem 2rem 4rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .tech-illustration {
+                width: 300px;
+                height: 300px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .central-orb {
+                width: 80px;
+                height: 80px;
+                font-size: 1.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--gray-50);
+            padding: 6rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--purple-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .submit-btn {
+            background: var(--purple-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 102, 241, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+  <!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    
+    <!-- Logo + Text on the far left -->
+    <div class="logo-wrapper" style="display: flex; align-items: center; gap: 10px;">
+      <img src="logo.jpg" alt="CAPACITI logo" width="50" height="50" class="logo-img">
+      <span class="logo-text" style="font-weight: 800; font-size: 1.6rem; color: white;">CAPACITI</span>
+    </div>
+
+    <!-- Nav menu -->
+    <ul class="nav-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- CTA button -->
+    <a href="#contact" class="cta-nav">Get Started</a>
+  </div>
+</nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    Accelerating Tech Careers Since 2018
+                </div>
+                <h1 class="hero-title">Transform Your Future in Tech</h1>
+                <p class="hero-subtitle">
+                    Join South Africa's leading tech training program. We've helped over 1,000+ students 
+                    launch successful careers in software development, data science, cloud computing, and more.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-play"></i>
+                        Apply Now
+                    </a>
+                    <a href="#programs" class="btn-secondary">Explore Programs</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="tech-illustration">
+                    <div class="floating-card">
+                        <div class="card-icon code">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="card-title">Software Dev</div>
+                        <div class="card-subtitle">Build the future</div>
+                    </div>
+                    
+                    <div class="floating-card">
+                        <div class="card-icon cloud">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="card-title">Cloud Computing</div>
+                        <div class="card-subtitle">Scale globally</div>
+                    </div>
+                    
+                    <div class="floating-card">
+                        <div class="card-icon data">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="card-title">Data Science</div>
+                        <div class="card-subtitle">Unlock insights</div>
+                    </div>
+                    
+                    <div class="floating-card">
+                        <div class="card-icon security">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="card-title">Cybersecurity</div>
+                        <div class="card-subtitle">Protect digital assets</div>
+                    </div>
+
+                    <div class="central-orb">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Impact by Numbers</h2>
+                <p class="section-subtitle">We're proud of the difference we're making in South Africa's tech ecosystem</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon graduates">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-number">1,000+</div>
+                    <div class="stat-label">Graduates Placed</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon placement">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Job Placement Rate</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon partners">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Industry Partners</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon salary">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">45%</div>
+                    <div class="stat-label">Average Salary Increase</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">Trusted by Industry Leaders</h2>
+                <p class="section-subtitle">We partner with leading companies to provide real-world training and job opportunities</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-icon microsoft">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h4>Microsoft</h4>
+                    <p>Cloud & AI Training</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-icon aws">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h4>Amazon AWS</h4>
+                    <p>Cloud Infrastructure</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-icon google">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h4>Google</h4>
+                    <p>Developer Tools</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-icon ibm">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4>IBM</h4>
+                    <p>Enterprise Solutions</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-icon accenture">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Accenture</h4>
+                    <p>Digital Consulting</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-icon dimension">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h4>Dimension Data</h4>
+                    <p>Network Solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section" id="programs">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">Tech Programs That Launch Careers</h2>
+                <p class="section-subtitle">Industry-aligned training programs designed to prepare you for in-demand tech careers</p>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image dev">
+                        
+                         <img src="software.png" alt="software dev " width="422" height="200">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Software Development</h3>
+                        <p class="program-description">Master modern programming languages and frameworks. Build real applications with JavaScript, Python, React, and Node.js while developing problem-solving skills essential for software development roles.</p>
+                        <a href="#" class="learn-more-btn">
+                            Learn More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image cloud">
+                        <img src="cloud.png" alt="cloud computing " width="422" height="200">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Cloud Computing</h3>
+                        <p class="program-description">Master AWS, Azure, and Google Cloud platforms. Get hands-on experience with cloud architecture, deployment, containerization, and security best practices that companies need.</p>
+                        <a href="#" class="learn-more-btn">
+                            Learn More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image data">
+                        <img src="data.png" alt="Data Dcience " width="422" height="200">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Data Science</h3>
+                        <p class="program-description">Analyze data and build machine learning models that drive business decisions. Learn Python, SQL, TensorFlow, and data visualization tools to become a data-driven professional.</p>
+                        <a href="#" class="learn-more-btn">
+                            Learn More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image security">
+                        <img src="cyber.png" alt="Cybersecurity " width="419" height="199">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Cybersecurity</h3>
+                        <p class="program-description">Protect digital assets and secure systems from evolving threats. Learn ethical hacking, security protocols, incident response, and risk assessment methodologies.</p>
+                        <a href="#" class="learn-more-btn">
+                            Learn More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image mobile">
+                        <img src="mobile.png" alt="Mobile Development" width="419" height="199">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Mobile Development</h3>
+                        <p class="program-description">Create iOS and Android applications using React Native, Flutter, and native technologies. Design user-friendly interfaces and deploy apps to global app stores.</p>
+                        <a href="#" class="learn-more-btn">
+                            Learn More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image design">
+                        <img src="ux.png" alt="ux/ui " width="420" height="200">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">UX/UI Design</h3>
+                        <p class="program-description">Design intuitive digital experiences that users love. Master design thinking, prototyping tools like Figma, user research, and create portfolios that get you hired.</p>
+                        <a href="#" class="learn-more-btn">
+                            Learn More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                    <i class="fas fa-rocket"></i>
+                    View All Programs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-subtitle">Hear from graduates, employers, and partners who've experienced the CAPACITI difference</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"CAPACITI helped me transition from being unemployed to becoming a full-time software developer. The mentorship and real-world projects gave me confidence to succeed in the digital economy."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Thabo Mokoena</h4>
+                            <p>Graduate, Class of 2021</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Working with CAPACITI has been a game-changer for our company. Their graduates arrive with both technical skills and workplace readiness, which makes them valuable from day one."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Petersen</h4>
+                            <p>HR Director, TechSolutions SA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Partnering with CAPACITI aligns perfectly with our mission of creating sustainable employment. The measurable impact on youth employment outcomes has been outstanding."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>David Naidoo</h4>
+                            <p>Programme Director, FutureSkills Foundation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"The CAPACITI training gave me the foundation to thrive in the workplace. I went from uncertainty to confidence in my career path within just six months."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Lerato Mthembu</h4>
+                            <p>Data Scientist, Class of 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events Section -->
+    <section class="news-section" id="news">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">News & Events</h2>
+                <p class="section-subtitle">Stay up to date with the latest happenings at CAPACITI</p>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <div class="news-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="news-date">MAR 15</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Tech Career Fair 2025</h3>
+                        <p>Join us for our annual tech career fair featuring top employers looking for talented graduates. Network with industry leaders and explore exciting career opportunities.</p>
+                        <div class="news-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Johannesburg</span>
+                            <a href="#" class="news-btn">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <div class="news-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="news-date">FEB 28</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Graduation Ceremony</h3>
+                        <p>Celebrating the achievements of our Class of 2024 graduates. Join us as we honor their hard work and welcome them to the tech industry.</p>
+                        <div class="news-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Cape Town</span>
+                            <a href="#" class="news-btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <div class="news-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="news-date">WEEKLY</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Free Coding Workshop</h3>
+                        <p>Introduction to web development workshop for beginners. Learn HTML, CSS, and JavaScript basics in this hands-on session.</p>
+                        <div class="news-meta">
+                            <span><i class="fas fa-globe"></i> Online</span>
+                            <a href="#" class="news-btn">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opportunities Section -->
+    <section class="opportunities-section" id="opportunities">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">Current Opportunities</h2>
+                <p class="section-subtitle">Explore current openings for students, graduates, and industry partners</p>
+            </div>
+            
+            <div class="opportunities-grid">
+                <div class="opportunity-card">
+                    <div class="opportunity-icon students">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="opportunity-content">
+                        <h3>Student Applications Open</h3>
+                        <p>Applications are now open for our 2025 cohort across all programs. Join thousands of ambitious individuals starting their tech careers.</p>
+                        <ul class="opportunity-features">
+                            <li><i class="fas fa-check"></i> Full scholarships available</li>
+                            <li><i class="fas fa-check"></i> Guaranteed job placement support</li>
+                            <li><i class="fas fa-check"></i> Industry mentorship</li>
+                        </ul>
+                        <a href="#contact" class="opportunity-btn primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <div class="opportunity-icon partners">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="opportunity-content">
+                        <h3>Partner With Us</h3>
+                        <p>Companies looking to hire skilled tech talent or provide internships. Join our network of industry partners and access top talent.</p>
+                        <ul class="opportunity-features">
+                            <li><i class="fas fa-check"></i> Access to pre-screened candidates</li>
+                            <li><i class="fas fa-check"></i> Custom training programs</li>
+                            <li><i class="fas fa-check"></i> CSI partnership opportunities</li>
+                        </ul>
+                        <a href="#contact" class="opportunity-btn secondary">Become a Partner</a>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <div class="opportunity-icon careers">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="opportunity-content">
+                        <h3>Join Our Team</h3>
+                        <p>We're looking for passionate individuals to join our mission of transforming lives through technology education.</p>
+                        <ul class="opportunity-features">
+                            <li><i class="fas fa-check"></i> Technical trainers</li>
+                            <li><i class="fas fa-check"></i> Career coaches</li>
+                            <li><i class="fas fa-check"></i> Program coordinators</li>
+                        </ul>
+                        <a href="#contact" class="opportunity-btn secondary">View Positions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Stay Connected</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Subscribe to our newsletter for the latest updates on programs, opportunities, and success stories</p>
+            </div>
+            
+            <div class="newsletter-form">
+                <div class="newsletter-input-wrapper">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Board of Directors Section -->
+    <section class="board-section" id="about">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">Board of Directors</h2>
+                <p class="section-subtitle">Meet the visionary leaders guiding CAPACITI's mission to transform South Africa's tech landscape</p>
+            </div>
+
+            <div class="board-grid">
+                <div class="board-card">
+                  <img src="Chanel.JPG" alt="Chanel" width="200" height="200">  
+                        <h3 class="board-name">Chanel Oldfiel</h3>
+                        <p class="board-title">Head of CAPACITI</p>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-card">
+
+                           
+                        </div>
+                    </div>
+                    <div class="board-content">
+                        <img src="Nash.JPG" alt="Nash" width="200" height="200">
+                        <h3 class="board-name">Nasheeta du Toit</h3>
+                        <p class="board-title">Head of Brand</p>
+                    
+                        
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-card">
+                   
+                        </div>
+                    </div>
+                    <div class="board-content">
+                        <img src="Kelly.JPG" alt="Kelly" width="200" height="200">
+                        <h3 class="board-name">Kelly Maroon</h3>
+                        <p class="board-title"> Head of Talent</p>
+                        
+                        
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-card">
+                    
+                        </div>
+                    </div>
+                    <div class="board-content">
+                        <img src="Chesarae.JPG" alt="Chesarae" width="200" height="200">
+                        <h3 class="board-name">Chesarae Pillay</h3>
+                        <p class="board-title">Head of Partnerships</p>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2 class="section-title">Ready to Transform Your Career?</h2>
+                <p class="section-subtitle">Get in touch with us to learn more about our programs and start your tech journey</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);">Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Visit Our Campuses</h4>
+                            <p style="color: var(--gray-600); margin: 0;">Cape Town • Johannesburg • Port Elizabeth • Nelspruit</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Call Us</h4>
+                            <p style="color: var(--gray-600); margin: 0;">021 003 7509</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Email Us</h4>
+                            <p style="color: var(--gray-600); margin: 0;">hello@capaciti.org.za</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Website</h4>
+                            <p style="color: var(--gray-600); margin: 0;">capaciti.org.za</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h4 style="font-weight: 600; margin-bottom: 1rem;">Follow Us</h4>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="#" style="width: 40px; height: 40px; background: var(--purple-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" style="width: 40px; height: 40px; background: var(--blue-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" style="width: 40px; height: 40px; background: var(--pink-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" style="width: 40px; height: 40px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);">Send Us a Message</h3>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Enter your email address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label>I'm interested in</label>
+                            <select required>
+                                <option value="">Select a program</option>
+                                <option value="software">Software Development</option>
+                                <option value="cloud">Cloud Computing</option>
+                                <option value="data">Data Science</option>
+                                <option value="security">Cybersecurity</option>
+                                <option value="mobile">Mobile Development</option>
+                                <option value="design">UX/UI Design</option>
+                                <option value="general">General Information</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="5" placeholder="Tell us about your background and career goals" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const range = target - start;
+            const startTime = performance.now();
+            const suffix = element.textContent.replace(/[0-9]/g, '');
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(progress * range + start);
+                
+                element.textContent = current + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Start counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const number = parseInt(text.replace(/[^0-9]/g, ''));
+                        animateCounter(stat, number);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+        });
+
+        // Program card interactions
+        document.querySelectorAll('.learn-more-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const programTitle = btn.closest('.program-card').querySelector('.program-title').textContent;
+                alert(`Learn more about our ${programTitle} program! Contact us for detailed information and enrollment.`);
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Modern CAPACITI website loaded successfully!');
+        });
+    </script>
+</body>
+</html>
